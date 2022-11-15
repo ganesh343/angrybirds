@@ -34,14 +34,14 @@ white = (255, 255, 255)
 
 
 # create game variables
-ground_scroll = 0
-scroll_speed = 4
-flying = False
-game_over = False
-pipe_gap = 150
+ground_scroll = 0 #ground scrolling
+scroll_speed = 4  #speed of ground scrolling
+flying = False    #flying of bird at the start of game
+game_over = False #gameover is true/false
+pipe_gap = 150    #gap between eac pipes
 pipe_frequency = 1500 #milliseconds
 last_pipe = pygame.time.get_ticks() - pipe_frequency
-score = 0
+score = 0               #scorecard at the start of game
 pass_pipe = False
 
 #load images
@@ -49,10 +49,12 @@ bg = pygame.image.load('image/bg.png')
 ground_img = pygame.image.load('image/ground.png')
 button_img = pygame.image.load('image/restart.png')
 
+#draw score text with font
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img,(x,y))
-    
+
+#show the restrt button 
 def reset_game():
     pipe_group.empty()
     flappy.rect.x = 100
@@ -110,6 +112,7 @@ class Bird(pygame.sprite.Sprite):
             self.image = pygame.transform.rotate(self.images[self.index], self.vel * -2)
         else:
             self.image = pygame.transform.rotate(self.images[self.index], -90)
+
 #Pipe class
 class Pipe(pygame.sprite.Sprite):
     def __init__(self,x, y, position):
@@ -127,6 +130,7 @@ class Pipe(pygame.sprite.Sprite):
         self.rect.x -= scroll_speed
         if self.rect.right < 0:
             self.kill()
+            
 #restart button class
 class Button():
     def __init__(self, x, y, image):
@@ -234,3 +238,4 @@ while run:
     pygame.display.update()
 
 pygame.quit()
+#quit 
