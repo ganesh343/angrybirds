@@ -5,4 +5,4 @@ Flappybird
 > and run it
 > you can make your own version of edits
 > instead of using the given images, play with it by importing diffrent images
-> have fun !
+> have fun  !
